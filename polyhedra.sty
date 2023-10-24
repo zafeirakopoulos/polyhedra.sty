@@ -1,6 +1,6 @@
 %% polyhedra.tex
 %% polyhedra LaTeX package
-%% Copyright 2015-2018 Zafeirakis Zafeirakopoulos
+%% Copyright 2015-2023 Zafeirakis Zafeirakopoulos
 %% zafeirakopoulos@gmail.com
   %
   % This work may be distributed and/or modified under the
@@ -12,18 +12,17 @@
   % version 2005/12/01 or later.
   %
   % This work has the LPPL maintenance status `maintained'.
-  %
+  % 
   % The Current Maintainer of this work is Zafeirakis Zafeirakopoulos.
   %
   % This work consists of the files polyhedra.tex and polyhedra.sty.
-
-
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Identification    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{polyhedra}[2018/1/1 Polyhedra LaTeX package]
+\ProvidesPackage{polyhedra}[2023/10/31 Polyhedra LaTeX package]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%  Required Packages  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,7 +89,7 @@
 \newcommand{\EdgeThickness}{1}
 
 
-
+    
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Graphics Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -153,7 +152,9 @@ theta={0},
 \define@key{vertex}{opacity}{\def\mm@opacity{#1}}
 \define@key{vertex}{thickness}{\def\mm@thickness{#1}}
 \define@key{vertex}{pattern}{\def\mm@pattern{#1}}
+
 \define@key{vertex}{point}{\def\mm@point{#1}}
+
 \define@key{vertex}{text}{\def\mm@text{#1}}
 \define@key{vertex}{textcolor}{\def\mm@textcolor{#1}}
 \define@key{vertex}{anchora}{\def\mm@anchora{#1}}
@@ -172,7 +173,7 @@ anchora={north},
 anchorb={above}
 ,#1 } %
 \ifthenelse{\equal{\mm@status}{normal}}{\def\fillcolor{\mm@color}}{
-\ifthenelse{\equal{\mm@status}{intesection}}{\def\fillcolor{\IntersectionColor}}
+\ifthenelse{\equal{\mm@status}{intesection}}{\def\fillcolor{\IntersectionColor}} 
 {
 \ifthenelse{\equal{\mm@status}{alert}}{\def\fillcolor{\AlertColor}}{
 \ifthenelse{\equal{\mm@status}{focus}}{\def\fillcolor{\FocusColor}}{
@@ -187,14 +188,14 @@ anchorb={above}
 {\def\thelabel{label={[anchor=\mm@anchora]\mm@anchorb: \mm@text}}}
    \xdef\drawcom{
       node[draw,circle,
-      color=\mm@color,
-      inner sep=\mm@thickness pt,
+      color=\mm@color,  
+      inner sep=\mm@thickness pt, 
       fill=\fillcolor,
       pattern=\mm@pattern,
       pattern color=\mm@color,
       opacity=\mm@opacity,
       \thelabel
-      ]
+      ] 
       at \thepoint {} ;
      }
    \draw \drawcom
@@ -233,12 +234,12 @@ pattern={},
 }}}}}
 
    \gdef\drawcom{
-      [->, color=\rcolor,
-      line width=\mm@thickness,
+      [->, color=\rcolor,  
+      line width=\mm@thickness, 
       opacity=\mm@opacity,
-      \raypattern]
+      \raypattern] 
   }
-  \foreach \point [count=\xi] in \mm@points{
+  \foreach \point [count=\xi] in \mm@points{ 
       \StrLeft{\point}{1}[\firstletter]
 \ifthenelse{\equal{\firstletter}{(}}{\def\thepoint{\point}}{\def\thepoint{(
 \point)}}
@@ -247,7 +248,7 @@ pattern={},
     \else
       \xdef\drawcom{\drawcom -- \thepoint}
     \fi
-  }
+  } 
   \xdef\drawcom{\drawcom  ;}
   \draw \drawcom
  \endgroup%
@@ -276,7 +277,7 @@ pattern={},
 }
 {
   \ifthenelse{\equal{\mm@status}{alert}}{\xdef\rcolor{\AlertColor}}{
-
+    
 \ifthenelse{\equal{\mm@status}{open}}{\xdef\edgepattern{dashed}\xdef\rcolor{
 \mm@color}}{
 
@@ -285,12 +286,12 @@ pattern={},
 }}}}}
 
    \gdef\drawcom{
-      [color=\rcolor,
-      line width=\mm@thickness,
+      [color=\rcolor,  
+      line width=\mm@thickness, 
       opacity=\mm@opacity,
-      \edgepattern]
+      \edgepattern] 
   }
-  \foreach \point [count=\xi] in \mm@points{
+  \foreach \point [count=\xi] in \mm@points{ 
       \StrLeft{\point}{1}[\firstletter]
 \ifthenelse{\equal{\firstletter}{(}}{\def\thepoint{\point}}{\def\thepoint{(
 \point)}}
@@ -299,7 +300,7 @@ pattern={},
     \else
       \xdef\drawcom{\drawcom -- \thepoint}
     \fi
-  }
+  } 
   \xdef\drawcom{\drawcom  ;}
   \draw \drawcom
  \endgroup%
@@ -325,7 +326,7 @@ points={(0,0)},status={normal},pattern={},boundary={true},#1 } %
 }
 {
   \ifthenelse{\equal{\mm@status}{alert}}{\xdef\rcolor{\AlertColor}}{
-
+    
 \ifthenelse{\equal{\mm@status}{open}}{\xdef\polygonpattern{\OpenPolygonPattern}
 \xdef\rcolor {
 \mm@color}}{
@@ -336,19 +337,18 @@ points={(0,0)},status={normal},pattern={},boundary={true},#1 } %
 
 \ifthenelse{\equal{\mm@boundary}{true}}
 {\def\bounddraw{draw=\rcolor}}
-{\def\bounddraw{draw=none}}
+{\def\bounddraw{draw=none}} 
 
    \gdef\drawcom{
-      [\bounddraw,
-      line width=\mm@thickness,
-      fill=\rcolor,
-      fill opacity=\mm@opacity,
+      [\bounddraw,  
+      line width=\mm@thickness, 
+      fill=\rcolor,   
       opacity=\mm@opacity,
       pattern=\polygonpattern,
       pattern color=\rcolor
-      ]
+      ] 
   }
-  \foreach \point [count=\xi] in \mm@points{
+  \foreach \point [count=\xi] in \mm@points{ 
      \StrLeft{\point}{1}[\firstletter]
 \ifthenelse{\equal{\firstletter}{(}}{\def\thepoint{\point}}{\def\thepoint{(
 \point)}}
@@ -357,7 +357,7 @@ points={(0,0)},status={normal},pattern={},boundary={true},#1 } %
     \else
       \xdef\drawcom{\drawcom -- \thepoint}
     \fi
-  }
+  } 
   \xdef\drawcom{\drawcom -- cycle ;}
   \draw \drawcom
  \endgroup%
@@ -374,19 +374,19 @@ points={(0,0)},status={normal},pattern={},boundary={true},#1 } %
 \DeclareDocumentCommand{\halfspace}{m}{%
 \begingroup%
   \setkeys{halfspace}{color=blue,opacity={0.7},thickness={1},
-points={(0,0)},status={normal},pattern={north west
+points={(0,0)},status={normal},pattern={north west 
 lines},patterncolor={\HalfspaceColor}
 ,#1 } %
    \gdef\drawcom{
-      [draw=none,color=\mm@color,
-      line width=\mm@thickness,
-      fill=\mm@color,
+      [draw=none,color=\mm@color,  
+      line width=\mm@thickness, 
+      fill=\mm@color,   
       opacity=\mm@opacity,
       pattern=\mm@pattern,
       pattern color=\mm@patterncolor
-      ]
+      ] 
   }
-  \foreach \point [count=\xi] in \mm@points{
+  \foreach \point [count=\xi] in \mm@points{ 
      \StrLeft{\point}{1}[\firstletter]
 \ifthenelse{\equal{\firstletter}{(}}{\def\thepoint{\point}}{\def\thepoint{(
 \point)}}
@@ -395,7 +395,7 @@ lines},patterncolor={\HalfspaceColor}
     \else
       \xdef\drawcom{\drawcom -- \thepoint}
     \fi
-  }
+  } 
   \xdef\drawcom{\drawcom -- cycle ;}
   \draw \drawcom
  \endgroup%
@@ -408,14 +408,15 @@ lines},patterncolor={\HalfspaceColor}
 \define@key{cone}{thickness}{\def\mm@thickness{#1}}
 \define@key{cone}{status}{\def\mm@status{#1}}
 \define@key{cone}{pattern}{\def\mm@pattern{#1}}
+
 \define@key{cone}{generators}{\def\mm@generators{#1}}
 \define@key{cone}{vertex}{\def\mm@vertex{#1}}
 \DeclareDocumentCommand{\cone}{m}{%
 \begingroup%
   \setkeys{cone}{color=solarized-blue,opacity={1},thickness={1},
-  vertex={(0,0)},generators={(0,0)},status={normal},pattern={north west
+  vertex={(0,0)},generators={(0,0)},status={normal},pattern={north west 
 lines},#1 } %
-
+  
 \ifthenelse{\equal{\mm@status}{normal}}{\xdef\rcolor{\mm@color}}{
 \ifthenelse{\equal{\mm@status}{intesection}}{\xdef\rcolor{\IntersectionColor}
 }
@@ -424,27 +425,27 @@ lines},#1 } %
     \ifthenelse{\equal{\mm@status}{focus}}{\xdef\rcolor{\FocusColor}}{
       \xdef\rcolor{\mm@color}
 }}}}
-
+  
    \gdef\drawcom{
-      [->,color=\rcolor,
-      line width=\mm@thickness,
-      fill=\rcolor,
-      opacity=\mm@opacity]
+      [->,color=\rcolor,  
+      line width=\mm@thickness, 
+      fill=\rcolor,   
+      opacity=\mm@opacity] 
   }
-
+  
        \StrLeft{\mm@vertex}{1}[\firstletter]
     \ifthenelse{\equal{\firstletter}{(}}
     {\def\thevertex{\mm@vertex}}
     {\def\thevertex{(\mm@vertex)}}
 
     \gdef\previouspoint{\thevertex}
-
+     
     \foreach \point in \mm@generators{
        \StrLeft{\point}{1}[\firstletter]
 \ifthenelse{\equal{\firstletter}{(}}{\def\thepoint{\point}}{\def\thepoint{(
 \point)}}
 
-    \node (xxxxO) at \thevertex {}; % Possible to add generator labels
+    \node (xxxxO) at \thevertex {}; % Possible to add generator labels  
     \node (xxxxA) at \thepoint {}; % Possible to add generator labels
     \coordinate (xxxxB) at ($(xxxxO)!1.5!(xxxxA)$);
      \draw [dashed,color=\rcolor]  \thevertex -- (xxxxB) ;
@@ -452,8 +453,8 @@ lines},#1 } %
     \ifthenelse{\equal{\previouspoint}{\thevertex}}{}
     {
     \node (xxxxC) at \previouspoint {}; % Possible to add generator labels
-    \draw [draw=none,pattern color=\rcolor,pattern=\mm@pattern,opacity=0.6]
-  \thevertex -- ($(xxxxO)!1.3!(xxxxC)$)  --
+    \draw [draw=none,pattern color=\rcolor,pattern=\mm@pattern,opacity=0.6]      
+  \thevertex -- ($(xxxxO)!1.3!(xxxxC)$)  -- 
 ($(xxxxO)!1.3!(xxxxA)$)  ;          }
     \xdef\previouspoint{\thepoint}
 
@@ -473,59 +474,59 @@ lines},#1 } %
 \define@key{axes}{labels}{\def\mm@labels{#1}}
 \DeclareDocumentCommand{\axes}{m}{%
 \begingroup%
-
+  
 \setkeys{axes}{x={0,1},y={0,1},z={},xlabel={x},ylabel={y},zlabel={z},labels={
 true} , #1 } %
 
    \splicelist{\mm@x}
     \ifthenelse{\equal{\mm@z}{}}{
-    \coordinate (Origin)   at (0,0);
+    \coordinate (Origin)   at (0,0);  
     \splicelist{\mm@x}
     \coordinate (XAxisMin) at (-\myhead,0);
     \coordinate (XAxisMax) at (\mylast,0);
     \coordinate (XLabel) at (\mylast +0.3,0,0);
-
+    
     \splicelist{\mm@y}
     \coordinate (YAxisMin) at (0,-\myhead);
     \coordinate (YAxisMax) at (0,\mylast);
     \coordinate (YLabel) at (0,\mylast +0.3,0);
-
+ 
     \draw [thin, gray,-latex] (XAxisMin) -- (XAxisMax) ;% Draw x axis
     \draw [thin, gray,-latex] (YAxisMin) -- (YAxisMax);% Draw y axis
    \ifthenelse{\equal{\mm@labels}{no}}{}{
       \node at (XLabel) {\mm@xlabel};
       \node at (YLabel) {\mm@ylabel};
   }
-
+    
       }{
-    \coordinate (Origin)   at (0,0);
+    \coordinate (Origin)   at (0,0);  
     \splicelist{\mm@x}
     \coordinate (XAxisMin) at (-\myhead,0);
     \coordinate (XAxisMax) at (\mylast,0);
     \coordinate (XLabel) at (\mylast +0.3,0,0);
-
+    
     \splicelist{\mm@y}
     \coordinate (YAxisMin) at (0,-\myhead);
     \coordinate (YAxisMax) at (0,\mylast);
      \coordinate (YLabel) at (0,\mylast +0.3,0);
-
+    
     \splicelist{\mm@z}
     \coordinate (ZAxisMin) at (0,0,-\myhead);
     \coordinate (ZAxisMax) at (0,0,\mylast);
     \coordinate (ZLabel) at (0,0,\mylast +0.3);
-
+    
     \draw [thin, gray,-latex] (XAxisMin) -- (XAxisMax) ;% Draw x axis
     \draw [thin, gray,-latex] (YAxisMin) -- (YAxisMax);% Draw y axis
     \draw [thin, gray,-latex] (ZAxisMin) -- (ZAxisMax);% Draw z axis
     \ifthenelse{\equal{\mm@labels}{no}}{}{
 	\node at (XLabel) {\mm@xlabel};
 	\node at (YLabel) {\mm@ylabel};
-	\node at (ZLabel) {\mm@zlabel};
+	\node at (ZLabel) {\mm@zlabel};   
     }
-
+    
    }
 
-
+      
 
 \endgroup%
 }
@@ -545,19 +546,19 @@ true} , #1 } %
 \DeclareDocumentCommand{\hyperplane}{m}{%
 \begingroup%
   \setkeys{hyperplane}{color=blue,fill=orange,opacity={0.7},thickness={1},
-points={(0,0)},status={normal},pattern={north west
+points={(0,0)},status={normal},pattern={north west 
 lines},patterncolor={\HalfspaceColor}
 ,#1 } %
    \gdef\drawcom{
-      [draw=none,color=\mm@color,
-      line width=\mm@thickness,
-      fill=\mm@fill,
+      [draw=none,color=\mm@color,  
+      line width=\mm@thickness, 
+      fill=\mm@fill,   
       opacity=\mm@opacity,
       pattern=\mm@pattern,
       pattern color=\mm@patterncolor
-      ]
+      ] 
   }
-  \foreach \point [count=\xi] in \mm@points{
+  \foreach \point [count=\xi] in \mm@points{ 
      \StrLeft{\point}{1}[\firstletter]
 \ifthenelse{\equal{\firstletter}{(}}{\def\thepoint{\point}}{\def\thepoint{(
 \point)}}
@@ -566,7 +567,7 @@ lines},patterncolor={\HalfspaceColor}
     \else
       \xdef\drawcom{\drawcom -- \thepoint}
     \fi
-  }
+  } 
   \xdef\drawcom{\drawcom -- cycle ;}
   \draw \drawcom
  \endgroup%

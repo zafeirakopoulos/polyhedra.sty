@@ -1,11 +1,13 @@
-\documentclass[a4paper,10pt]{article}
-\usepackage{polyhedra}
+\documentclass[a4paper]{article}
 \usepackage{listings}
+
+\usepackage{polyhedra}
 
 
 
 
 \begin{document}
+
 \lstset{language=[LaTeX]{TeX}}
 
 \lstset{
@@ -26,7 +28,7 @@ escapeinside={(*}{*)}
 }
 
 
-\title{Polyhedra \LaTeX\ package - v. 0.1}
+\title{Polyhedra \LaTeX\ package - v. 0.3}
 \author{Zafeirakis zafeirakopoulos}
 \maketitle
 \begin{abstract}
@@ -296,13 +298,13 @@ Note that the sequence in which the points are given matters.
   \begin{minipage}{0.7\textwidth}
   \begin{lstlisting}
 \begin{polyhedron}{}
-  \edge{points={(0,0),(2,2)},status=alert}
-  \edge{points={(0,0),(2,3)},status=focus}
-  \edge{points={(0,0),(2,4)},status=open}
-  \edge{points={(0,0),(2,5)},color=orange}
-  \edge{points={(0,0),(2,6)},status=normal}
-  \edge{points={(2,1),(3,3)},thickness=3}
-  \edge{points={(4,1),(3,3)},pattern={dotted}}
+  \ray{points={(0,0),(2,2)},status=alert}
+  \ray{points={(0,0),(2,3)},status=focus}
+  \ray{points={(0,0),(2,4)},status=open}
+  \ray{points={(0,0),(2,5)},color=orange}
+  \ray{points={(0,0),(2,6)},status=normal}
+  \ray{points={(2,1),(3,3)},thickness=3}
+  \ray{points={(4,1),(3,3)},pattern={dotted}}
 \end{polyhedron}
   \end{lstlisting}
   \end{minipage}
@@ -327,7 +329,7 @@ The extra arguments are:
 \begin{description}
  \item[vertex]  Sets the apex of the cone.
  \item[generators] A list of points
- \item[openeness] A list of boolean values declaring the openess of a
+ \item[openeness] A list of boolean values declaring the openness of a
 		  simplicial cone.
 \end{description}
 
